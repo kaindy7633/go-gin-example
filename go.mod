@@ -4,7 +4,7 @@ go 1.17
 
 require (
 	github.com/gin-contrib/sse v0.1.0 // indirect
-	github.com/gin-gonic/gin v1.7.4 // indirect
+	github.com/gin-gonic/gin v1.7.4
 	github.com/go-playground/locales v0.14.0 // indirect
 	github.com/go-playground/universal-translator v0.18.0 // indirect
 	github.com/go-playground/validator/v10 v10.9.0 // indirect
@@ -20,4 +20,19 @@ require (
 	golang.org/x/text v0.3.7 // indirect
 	google.golang.org/protobuf v1.27.1 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
+)
+
+require github.com/go-ini/ini v1.63.2
+
+require github.com/unknwon/com v1.0.1
+
+require (
+	github.com/go-sql-driver/mysql v1.6.0 // indirect
+	github.com/jinzhu/gorm v1.9.16
+	github.com/jinzhu/inflection v1.0.0 // indirect
+)
+
+replace (
+	github.com/kaindy7633/go-gin-example/pkg/setting => /Users/kaindy/MyWorks/project/go-gin-example/pkg/setting/
+	github.com/kaindy7633/go-gin-example/routers => /Users/kaindy/MyWorks/project/go-gin-example/routers/
 )
