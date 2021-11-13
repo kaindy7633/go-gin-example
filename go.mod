@@ -32,7 +32,15 @@ require (
 	github.com/jinzhu/inflection v1.0.0 // indirect
 )
 
+require (
+	github.com/astaxie/beego v1.12.3 // indirect
+	github.com/shiena/ansicolor v0.0.0-20200904210342-c7312218db18 // indirect
+)
+
 replace (
 	github.com/kaindy7633/go-gin-example/pkg/setting => /Users/kaindy/MyWorks/project/go-gin-example/pkg/setting/
+	github.com/kaindy7633/go-gin-example/conf => /Users/kaindy/MyWorks/project/go-gin-example/conf/
+	github.com/kaindy7633/go-gin-example/middleware => /Users/kaindy/MyWorks/project/go-gin-example/middleware/
+	github.com/kaindy7633/go-gin-example/models => /Users/kaindy/MyWorks/project/go-gin-example/models/
 	github.com/kaindy7633/go-gin-example/routers => /Users/kaindy/MyWorks/project/go-gin-example/routers/
 )
