@@ -50,6 +50,14 @@ func ParseToken(token string) (*Claims, error) {
 }
 
 func GetTokenFromRequestHeader(c *gin.Context) (token string) {
-	authorization := c.Request.Header["Authorization"][0]
-	return strings.Split(authorization, " ")[1]
+	author := c.Request.Header["Authorization"]
+	if len(author) > 0 {
+		_res := strings.Split(author[0], " ")
+		if len(_res) > 1 {
+			return _res[1]
+		} else {
+			return ""
+		}
+	}
+	return ""
 }
