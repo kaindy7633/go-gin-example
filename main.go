@@ -1,9 +1,13 @@
 package main
 
 import (
+	"context"
 	"fmt"
 	"log"
 	"net/http"
+	"os"
+	"os/signal"
+	"time"
 
 	"github.com/kaindy7633/go-gin-example/pkg/setting"
 	"github.com/kaindy7633/go-gin-example/routers"
@@ -20,8 +24,24 @@ func main() {
 		MaxHeaderBytes: 1 << 20,
 	}
 
-	err := s.ListenAndServe()
-	if err != nil {
-		log.Fatalf("Fail to start server, %v", err)
+	// 版本大于1.8,采用 http.Server 的 Shutdown 方法实现优雅停机
+	go func() {
+		if err := s.ListenAndServe(); err != nil {
+			log.Printf("Listen: %s\n", err)
+		}
+	}()
+
+	quit := make(chan os.Signal)
+	signal.Notify(quit, os.Interrupt)
+	<-quit
+
+	log.Println("Shutdown Server ...")
+
+	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+	defer cancel()
+	if err := s.Shutdown(ctx); err != nil {
+		log.Fatal("Server Shutdown:", err)
 	}
+
+	log.Println("Server exiting")
 }
